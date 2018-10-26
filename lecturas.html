@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lecturas</title>
+</head>
+<body>
+<h1>Lecturas</h1>
+<div id="lectura1">
+    <h2>LDD</h2>
+    <h5>Que es el LDD en bases de datos.</h5>
+    <p>Un lenguaje de base de datos o lenguaje de definición de datos (Data Definition Language, DDL por sus siglas en inglés) es un lenguaje proporcionado por el sistema de gestión de base de datos que permite a los programadores de la misma llevar a cabo las tareas de definición de las estructuras que almacenarán los datos así como de los procedimientos o funciones que permitan consultarlos.</p>
+</div>
+<div class="line"></div>
+<div id="lectura2">
+    <h2>LCD</h2>
+     <h5>Que es el LCD en bases de datos.</h5>
+    <pre>Es un lenguaje proporcionado por el Sistema de Gestión de Base de Datos que incluye una serie de comandos SQL que permiten al administrador controlar el acceso a los datos contenidos en la Base de Datos.
+
+    Sistemas gestores de base de datos que utilizan SQL:
+    SQL Server 
+    Oracle
+    MySql
+    PostgreSQL
+    DDL:
+    - Es la parte del SQL dedicada a la definición de la base de datos.
+    - Permite crear índices, definir reglas de validación de datos, relaciones etre tablas, etc.
+    DDL (Lenguaje de definición de datos)
+    DML (Lenguaje de manipulación de datos)
+    DCL (Lenguaje de control de datos)
+    Lenguaje estructurado de consulta (Structured Query Language)
+    Lenguaje utilizado para definir, controlar y accerder a los datos almacenados en una BD relacional.
+
+    Es un lenguaje universal que se emplea en cualquier sistema gestor de datos relacional.
+    En SQL Server la versión de SQL que se utiliza se llama TRANSACT - SQL.
+    DML:
+    Se compone de las instrucciones para el manejo de los datos es decir para insertar, modificar, eliminar, y seleccionar datos
+    DCL:
+    Se componen de instrucciones que permiten ejercer un control sobre los datos. Es responsable de la gestión de transacciones (COMMIT/ROLLBACK)..
+</pre>
+</div>
+<div class="line"></div>
+<div id="lectura3">
+    <h2>DML</h2>
+    <pre>El lenguaje de manipulación de datos (DML) es un vocabulario utilizado para recuperar y trabajar con datos en SQL. Existen declaraciones las cuales se podrán realizar con cada una de ellas agregar, modificar, consultar o eliminar datos de una base de datos de SQL Server. 
+        Las sentencias usadas son 4:
+
+        *Select: 
+            Con este comando se extrae la data de las tablas. 
+            Ejemplo: select * from tabla
+        *Insert: 
+            Con este comando se inserta datos en una tabla.
+            Ejemplo: insert into tabla (campo1, campo2, campon) values(valor1, valor2, valorn)
+        *Update
+            Con este comando actualiza datos de una tabla.
+            Ejemplo: Update tabla set campo1=valor1, campo2=valor2, campon=valorn
+        *Delete
+            Con este comando se podra eliminar datos de una tabla.
+            Ejemplo: Delete from tabla where campo1=valor1
+
+.</pre>
+</div>
+<div class="line"></div>
+<div id="lectura4">
+    <h2>ESTANDARIZACION Y EJEMPLOS DE UNA BASE DE DATOS</h2>
+    <pre>
+        Para proceder a estandarizar la base de datos en cuanto sus sentencias se usará un estándar propio el cual ayudará a la lectura y manipulación de los datos de esta forma:
+        Tablas (TBL_): 
+        Dentro de las tablas existen diferencias de acuerdo a su uso para este caso mencionare tres Referencial, Transaccional y de unión para relaciones muchos a muchos
+        Su forma de estandarizarlo al escribirlas son TBL_ donde indica que es una tabla, el siguiente carácter indicara el tipo de dicha tabla 
+
+        (R) referencia 
+        (T) transaccional  
+        (U) para unión 
+
+        seguido del nombre de la tabla en singular y descriptivo.
+        Ejemplo
+        Para ventas: TBL_TVENTA
+        Para usuarios: TBL_RUSUARIO
+        Para Perfiles de usuario: TBL_RPERFIL
+        Para usuarios que tienen un perfil: TBL_UUSUARIO_PERFIL.
+
+        Nombres de campos en una tabla:
+        Sera iniciado con los tres primeros caracteres que indican la tabla seguidos de un guion bajo, seguidos del tipo de dato y seguidos con el nombre del campo en singular.
+         
+        Ejemplo para la tabla TBL_RUSUARIO sus campos empezaran USU_
+        Para indicar el tipo de dato que almacenara dicho campo se asignaran el siguiente carácter así:
+        N numérico
+        C carácter o String
+        O booleano o bit
+        D fecha
+        Si el campo es una llave primaria seguirá después del carácter (ID)
+        Así quedaría la llave primaria de la tabla TBL_RUSUARIO:
+        USU_NID
+        Para el campo nombre
+        USU_CPRIMER_NOMBRE
+        Para saber si es activo o no
+        USU_OESTADO
+        Para saber el ingreso de una venta
+        VEN_DFECHA_VENTA
+        Si la tabla tiene una llave foránea está se deberá llamar igual a como este escrita en la tabla origen así por ejemplo en la tabla transaccional venta 
+        TBL_TVENTA el campo del usuario que realiza la venta se llamara USU_NID, siendo está foránea, esto es importante ya que ahorrara pasos si más adelante se quiere realizar un OLAP.
+        
+        Ejemplo de cómo realizar una base de datos:
+
+
+
+</pre>
+</div>
+<div class="line"></div>
+<div id="lectura5">
+    <h2>SCRIPT DE UNA BASE DE DATOS EN SQL SERVER</h2>
+    <pre>El siguente script crea una base de datos en SQL server, llamada BD_CLINICA_CALZADO
+
+            USE [BD_CLINICA_CALZADO]
+            GO
+            /****** Object:  Table [dbo].[TBL_RCALZADO]    Script Date: 25/10/2018 8:43:58 p. m. ******/
+            SET ANSI_NULLS ON
+            GO
+            SET QUOTED_IDENTIFIER ON
+            GO
+            CREATE TABLE [dbo].[TBL_RCALZADO](
+                [CAL_NID] [int] IDENTITY(1,1) NOT NULL,
+                [CAL_CDESCRIPTION] [varchar](50) NOT NULL,
+                [CAL_OACTIVE] [bit] NOT NULL,
+             CONSTRAINT [PK_TBL_RCALZADO] PRIMARY KEY CLUSTERED 
+            (
+                [CAL_NID] ASC
+            )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+            ) ON [PRIMARY]
+            GO
+            /****** Object:  Table [dbo].[TBL_RCLIENTE]    Script Date: 25/10/2018 8:44:00 p. m. ******/
+            SET ANSI_NULLS ON
+            GO
+            SET QUOTED_IDENTIFIER ON
+            GO
+            CREATE TABLE [dbo].[TBL_RCLIENTE](
+                [CLI_NID] [int] IDENTITY(1,1) NOT NULL,
+                [CLI_CNAME] [varchar](75) NOT NULL,
+                [CLI_CLAST_NAME] [varchar](75) NOT NULL,
+                [CLI_DBIRTHDAY] [datetime] NOT NULL,
+                [CLI_OACTIVE] [bit] NOT NULL,
+             CONSTRAINT [PK_TBL_RCLIENTE] PRIMARY KEY CLUSTERED 
+            (
+                [CLI_NID] ASC
+            )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+            ) ON [PRIMARY]
+            GO
+            /****** Object:  Table [dbo].[TBL_RDIRECCION]    Script Date: 25/10/2018 8:44:00 p. m. ******/
+            SET ANSI_NULLS ON
+            GO
+            SET QUOTED_IDENTIFIER ON
+            GO
+            CREATE TABLE [dbo].[TBL_RDIRECCION](
+                [DIR_NID] [bigint] IDENTITY(1,1) NOT NULL,
+                [USU_NID] [int] NULL,
+                [CLI_NID] [int] NULL,
+                [DIR_CADDRESS] [varchar](500) NOT NULL,
+                [DIR_CACTIVE] [bit] NOT NULL,
+             CONSTRAINT [PK_TBL_RDIRECCION] PRIMARY KEY CLUSTERED 
+            (
+                [DIR_NID] ASC
+            )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+            ) ON [PRIMARY]
+            GO
+            /****** Object:  Table [dbo].[TBL_RESTADO_REPARACION]    Script Date: 25/10/2018 8:44:01 p. m. ******/
+            SET ANSI_NULLS ON
+            GO
+            SET QUOTED_IDENTIFIER ON
+            GO
+            CREATE TABLE [dbo].[TBL_RESTADO_REPARACION](
+                [EST_NID] [int] IDENTITY(1,1) NOT NULL,
+                [EST_CDESCRIPTION] [varchar](20) NOT NULL,
+                [EST_OACTIVE] [bigint] NOT NULL,
+             CONSTRAINT [PK_TBL_RESTADO_REPARACION] PRIMARY KEY CLUSTERED 
+            (
+                [EST_NID] ASC
+            )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+            ) ON [PRIMARY]
+            GO
+            /****** Object:  Table [dbo].[TBL_RPERFIL]    Script Date: 25/10/2018 8:44:01 p. m. ******/
+            SET ANSI_NULLS ON
+            GO
+            SET QUOTED_IDENTIFIER ON
+            GO
+            CREATE TABLE [dbo].[TBL_RPERFIL](
+                [PER_NID] [int] IDENTITY(1,1) NOT NULL,
+                [PER_CDESCRIPTION] [varchar](100) NULL,
+                [PER_CROL] [varchar](50) NOT NULL,
+                [PER_OACTIVE] [bit] NOT NULL,
+             CONSTRAINT [PK_TBL_RPERFIL] PRIMARY KEY CLUSTERED 
+            (
+                [PER_NID] ASC
+            )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+            ) ON [PRIMARY]
+            GO
+            /****** Object:  Table [dbo].[TBL_RTELEFONO]    Script Date: 25/10/2018 8:44:01 p. m. ******/
+            SET ANSI_NULLS ON
+            GO
+            SET QUOTED_IDENTIFIER ON
+            GO
+            CREATE TABLE [dbo].[TBL_RTELEFONO](
+                [TEL_NID] [int] IDENTITY(1,1) NOT NULL,
+                [USU_NID] [int] NULL,
+                [CLI_NID] [int] NULL,
+                [TEL_CNUMBER] [varchar](9) NULL,
+                [TEL_CCELLPHONE] [varchar](10) NULL,
+             CONSTRAINT [PK_TBL_RTELEFONO] PRIMARY KEY CLUSTERED 
+            (
+                [TEL_NID] ASC
+            )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+            ) ON [PRIMARY]
+            GO
+            /****** Object:  Table [dbo].[TBL_RUSUARIO]    Script Date: 25/10/2018 8:44:01 p. m. ******/
+            SET ANSI_NULLS ON
+            GO
+            SET QUOTED_IDENTIFIER ON
+            GO
+            CREATE TABLE [dbo].[TBL_RUSUARIO](
+                [USU_NID] [int] IDENTITY(1,1) NOT NULL,
+                [USU_CNAME] [varchar](75) NOT NULL,
+                [USU_CLAST_NAME] [varchar](75) NOT NULL,
+                [USU_CPASSWORD] [varchar](100) NOT NULL,
+                [USU_DDATE_BIRTHDAY] [datetime] NOT NULL,
+                [USU_OACTIVE] [bit] NOT NULL,
+             CONSTRAINT [PK_TBL_RUSUARIO] PRIMARY KEY CLUSTERED 
+            (
+                [USU_NID] ASC
+            )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+            ) ON [PRIMARY]
+            GO
+            /****** Object:  Table [dbo].[TBL_TREPARACION]    Script Date: 25/10/2018 8:44:01 p. m. ******/
+            SET ANSI_NULLS ON
+            GO
+            SET QUOTED_IDENTIFIER ON
+            GO
+            CREATE TABLE [dbo].[TBL_TREPARACION](
+                [REP_NID] [bigint] IDENTITY(1,1) NOT NULL,
+                [USU_NID] [int] NOT NULL,
+                [CLI_NID] [int] NOT NULL,
+                [CAL_NID] [int] NOT NULL,
+                [EST_NID] [int] NOT NULL,
+                [CAL_CARRANGEMENT] [varchar](500) NOT NULL,
+                [CAL_NVALUE] [bigint] NOT NULL,
+                [CAL_DDATE_REGISTRY] [datetime] NOT NULL,
+                [CAL_DDATE_DELIVERY] [datetime] NULL,
+             CONSTRAINT [PK_TBL_TREPARACION] PRIMARY KEY CLUSTERED 
+            (
+                [REP_NID] ASC
+            )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+            ) ON [PRIMARY]
+            GO
+            /****** Object:  Table [dbo].[TBL_UUSUARIOPERFIL]    Script Date: 25/10/2018 8:44:01 p. m. ******/
+            SET ANSI_NULLS ON
+            GO
+            SET QUOTED_IDENTIFIER ON
+            GO
+            CREATE TABLE [dbo].[TBL_UUSUARIOPERFIL](
+                [PER_NID] [int] NOT NULL,
+                [USU_NID] [int] NOT NULL,
+                [UPE_OACTIVE] [bit] NOT NULL
+            ) ON [PRIMARY]
+            GO
+            ALTER TABLE [dbo].[TBL_RDIRECCION]  WITH CHECK ADD  CONSTRAINT [FK_TBL_RDIRECCION_TBL_RCLIENTE] FOREIGN KEY([CLI_NID])
+            REFERENCES [dbo].[TBL_RCLIENTE] ([CLI_NID])
+            GO
+            ALTER TABLE [dbo].[TBL_RDIRECCION] CHECK CONSTRAINT [FK_TBL_RDIRECCION_TBL_RCLIENTE]
+            GO
+            ALTER TABLE [dbo].[TBL_RDIRECCION]  WITH CHECK ADD  CONSTRAINT [FK_TBL_RDIRECCION_TBL_RUSUARIO] FOREIGN KEY([USU_NID])
+            REFERENCES [dbo].[TBL_RUSUARIO] ([USU_NID])
+            GO
+            ALTER TABLE [dbo].[TBL_RDIRECCION] CHECK CONSTRAINT [FK_TBL_RDIRECCION_TBL_RUSUARIO]
+            GO
+            ALTER TABLE [dbo].[TBL_RTELEFONO]  WITH CHECK ADD  CONSTRAINT [FK_TBL_RTELEFONO_TBL_RCLIENTE] FOREIGN KEY([CLI_NID])
+            REFERENCES [dbo].[TBL_RCLIENTE] ([CLI_NID])
+            GO
+            ALTER TABLE [dbo].[TBL_RTELEFONO] CHECK CONSTRAINT [FK_TBL_RTELEFONO_TBL_RCLIENTE]
+            GO
+            ALTER TABLE [dbo].[TBL_RTELEFONO]  WITH CHECK ADD  CONSTRAINT [FK_TBL_RTELEFONO_TBL_RUSUARIO] FOREIGN KEY([USU_NID])
+            REFERENCES [dbo].[TBL_RUSUARIO] ([USU_NID])
+            GO
+            ALTER TABLE [dbo].[TBL_RTELEFONO] CHECK CONSTRAINT [FK_TBL_RTELEFONO_TBL_RUSUARIO]
+            GO
+            ALTER TABLE [dbo].[TBL_TREPARACION]  WITH CHECK ADD  CONSTRAINT [FK_TBL_TREPARACION_TBL_RCALZADO] FOREIGN KEY([CAL_NID])
+            REFERENCES [dbo].[TBL_RCALZADO] ([CAL_NID])
+            GO
+            ALTER TABLE [dbo].[TBL_TREPARACION] CHECK CONSTRAINT [FK_TBL_TREPARACION_TBL_RCALZADO]
+            GO
+            ALTER TABLE [dbo].[TBL_TREPARACION]  WITH CHECK ADD  CONSTRAINT [FK_TBL_TREPARACION_TBL_RCLIENTE] FOREIGN KEY([CLI_NID])
+            REFERENCES [dbo].[TBL_RCLIENTE] ([CLI_NID])
+            GO
+            ALTER TABLE [dbo].[TBL_TREPARACION] CHECK CONSTRAINT [FK_TBL_TREPARACION_TBL_RCLIENTE]
+            GO
+            ALTER TABLE [dbo].[TBL_TREPARACION]  WITH CHECK ADD  CONSTRAINT [FK_TBL_TREPARACION_TBL_RESTADO_REPARACION] FOREIGN KEY([EST_NID])
+            REFERENCES [dbo].[TBL_RESTADO_REPARACION] ([EST_NID])
+            GO
+            ALTER TABLE [dbo].[TBL_TREPARACION] CHECK CONSTRAINT [FK_TBL_TREPARACION_TBL_RESTADO_REPARACION]
+            GO
+            ALTER TABLE [dbo].[TBL_TREPARACION]  WITH CHECK ADD  CONSTRAINT [FK_TBL_TREPARACION_TBL_RUSUARIO] FOREIGN KEY([USU_NID])
+            REFERENCES [dbo].[TBL_RUSUARIO] ([USU_NID])
+            GO
+            ALTER TABLE [dbo].[TBL_TREPARACION] CHECK CONSTRAINT [FK_TBL_TREPARACION_TBL_RUSUARIO]
+            GO
+            ALTER TABLE [dbo].[TBL_UUSUARIOPERFIL]  WITH CHECK ADD  CONSTRAINT [FK_TBL_UUSUARIOPERFIL_TBL_RPERFIL] FOREIGN KEY([PER_NID])
+            REFERENCES [dbo].[TBL_RPERFIL] ([PER_NID])
+            GO
+            ALTER TABLE [dbo].[TBL_UUSUARIOPERFIL] CHECK CONSTRAINT [FK_TBL_UUSUARIOPERFIL_TBL_RPERFIL]
+            GO
+            ALTER TABLE [dbo].[TBL_UUSUARIOPERFIL]  WITH CHECK ADD  CONSTRAINT [FK_TBL_UUSUARIOPERFIL_TBL_RUSUARIO] FOREIGN KEY([USU_NID])
+            REFERENCES [dbo].[TBL_RUSUARIO] ([USU_NID])
+            GO
+            ALTER TABLE [dbo].[TBL_UUSUARIOPERFIL] CHECK CONSTRAINT [FK_TBL_UUSUARIOPERFIL_TBL_RUSUARIO]
+            GO
+
+    </pre>
+</div>
+</div>
+</body>
+</html>
