@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lecturas</title>
+</head>
+<body>
+<h1>Lecturas</h1>
+<div class="line"></div>
+<div id="lectura4">
+    <h2>ESTANDARIZACION Y EJEMPLOS DE UNA BASE DE DATOS</h2>
+    <pre>
+        Para proceder a estandarizar la base de datos en cuanto sus sentencias se usará un estándar propio el cual ayudará 
+        a la lectura y manipulación de los datos de esta forma:
+        Tablas (<b>TBL_</b>): 
+        Dentro de las tablas existen diferencias de acuerdo a su uso para este caso mencionare tres Referencial, 
+        Transaccional y de unión para relaciones muchos a muchos su forma de estandarizarlo al escribirlas son 
+        <b>TBL_</b> donde indica que es una tabla, el siguiente carácter indicara el tipo de dicha tabla 
+
+        (<b>R</b>) referencia 
+        (<b>T</b>) transaccional  
+        (<b>U</b>) para unión 
+
+        seguido del nombre de la tabla en singular y descriptivo.
+        Ejemplo
+        Para ventas: <b>TBL_TVENTA</b>
+        Para usuarios: <b>TBL_RUSUARIO</b>
+        Para Perfiles de usuario: <b>TBL_RPERFIL</b>
+        Para usuarios que tienen un perfil: <b>TBL_UUSUARIO_PERFIL</b>.
+
+        Nombres de campos en una tabla:
+        Sera iniciado con los tres primeros caracteres que indican la tabla seguidos de un guion bajo, seguidos del tipo de dato
+        y seguidos con el nombre del campo en singular.
+         
+        Ejemplo para la tabla <b>TBL_RUSUARIO</b> sus campos empezaran <b>USU_</b>
+        Para indicar el tipo de dato que almacenara dicho campo se asignaran el siguiente carácter así:
+        N numérico
+        <b>C</b> carácter o String
+        <b>O</b> booleano o bit
+        <b>D</b> fecha
+        Si el campo es una llave primaria seguirá después del carácter (ID)
+        Así quedaría la llave primaria de la tabla TBL_RUSUARIO:
+        <b>USU_NID</b>
+        Para el campo nombre
+        <b>USU_CPRIMER_NOMBRE</b>
+        Para saber si es activo o no
+        <b>USU_OESTADO</b>
+        Para saber el ingreso de una venta
+        <b>VEN_DFECHA_VENTA</b>
+        Si la tabla tiene una llave foránea está se deberá llamar igual a como este escrita en la tabla origen así por ejemplo
+        en la tabla transaccional venta 
+        <b>TBL_TVENTA</b>
+        el campo del usuario que realiza la venta se llamara <b>USU_NID</b>, siendo está foránea, esto es importante ya que ahorrara 
+        pasos si más adelante se quiere realizar un OLAP.
+    </pre>
+</div>
+</body>
+</html>
