@@ -8,226 +8,335 @@
 <div id="lectura5">
     <h2>SCRIPT DE UNA BASE DE DATOS EN SQL SERVER</h2>
 
-    <pre>El siguente script crea las tablas de una base de datos en SQL server, llamada <b>BD_CLINICA_CALZADO</b>
+    <pre>El siguente script crea las tablas de una base de datos en SQL server, llamada <b>BD_CLINICA_CALZADO</b> con data
 
-            USE [BD_CLINICA_CALZADO]
-            GO
-            /****** Object:  Table [dbo].[TBL_RCALZADO]    Script Date: 25/10/2018 8:43:58 p. m. ******/
-            SET ANSI_NULLS ON
-            GO
-            SET QUOTED_IDENTIFIER ON
-            GO
-            CREATE TABLE [dbo].[TBL_RCALZADO](
-                [CAL_NID] [int] IDENTITY(1,1) NOT NULL,
-                [CAL_CDESCRIPTION] [varchar](50) NOT NULL,
-                [CAL_OACTIVE] [bit] NOT NULL,
-             CONSTRAINT [PK_TBL_RCALZADO] PRIMARY KEY CLUSTERED 
-            (
-                [CAL_NID] ASC
-            )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, 
-            ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-            ) ON [PRIMARY]
-            GO
-            /****** Object:  Table [dbo].[TBL_RCLIENTE]    Script Date: 25/10/2018 8:44:00 p. m. ******/
-            SET ANSI_NULLS ON
-            GO
-            SET QUOTED_IDENTIFIER ON
-            GO
-            CREATE TABLE [dbo].[TBL_RCLIENTE](
-                [CLI_NID] [int] IDENTITY(1,1) NOT NULL,
-                [CLI_CNAME] [varchar](75) NOT NULL,
-                [CLI_CLAST_NAME] [varchar](75) NOT NULL,
-                [CLI_DBIRTHDAY] [datetime] NOT NULL,
-                [CLI_OACTIVE] [bit] NOT NULL,
-             CONSTRAINT [PK_TBL_RCLIENTE] PRIMARY KEY CLUSTERED 
-            (
-                [CLI_NID] ASC
-            )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, 
-            ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-            ) ON [PRIMARY]
-            GO
-            /****** Object:  Table [dbo].[TBL_RDIRECCION]    Script Date: 25/10/2018 8:44:00 p. m. ******/
-            SET ANSI_NULLS ON
-            GO
-            SET QUOTED_IDENTIFIER ON
-            GO
-            CREATE TABLE [dbo].[TBL_RDIRECCION](
-                [DIR_NID] [bigint] IDENTITY(1,1) NOT NULL,
-                [USU_NID] [int] NULL,
-                [CLI_NID] [int] NULL,
-                [DIR_CADDRESS] [varchar](500) NOT NULL,
-                [DIR_CACTIVE] [bit] NOT NULL,
-             CONSTRAINT [PK_TBL_RDIRECCION] PRIMARY KEY CLUSTERED 
-            (
-                [DIR_NID] ASC
-            )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, 
-            ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-            ) ON [PRIMARY]
-            GO
-            /****** Object:  Table [dbo].[TBL_RESTADO_REPARACION]    Script Date: 25/10/2018 8:44:01 p. m. ******/
-            SET ANSI_NULLS ON
-            GO
-            SET QUOTED_IDENTIFIER ON
-            GO
-            CREATE TABLE [dbo].[TBL_RESTADO_REPARACION](
-                [EST_NID] [int] IDENTITY(1,1) NOT NULL,
-                [EST_CDESCRIPTION] [varchar](20) NOT NULL,
-                [EST_OACTIVE] [bigint] NOT NULL,
-             CONSTRAINT [PK_TBL_RESTADO_REPARACION] PRIMARY KEY CLUSTERED 
-            (
-                [EST_NID] ASC
-            )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, 
-            ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-            ) ON [PRIMARY]
-            GO
-            /****** Object:  Table [dbo].[TBL_RPERFIL]    Script Date: 25/10/2018 8:44:01 p. m. ******/
-            SET ANSI_NULLS ON
-            GO
-            SET QUOTED_IDENTIFIER ON
-            GO
-            CREATE TABLE [dbo].[TBL_RPERFIL](
-                [PER_NID] [int] IDENTITY(1,1) NOT NULL,
-                [PER_CDESCRIPTION] [varchar](100) NULL,
-                [PER_CROL] [varchar](50) NOT NULL,
-                [PER_OACTIVE] [bit] NOT NULL,
-             CONSTRAINT [PK_TBL_RPERFIL] PRIMARY KEY CLUSTERED 
-            (
-                [PER_NID] ASC
-            )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, 
-            ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-            ) ON [PRIMARY]
-            GO
-            /****** Object:  Table [dbo].[TBL_RTELEFONO]    Script Date: 25/10/2018 8:44:01 p. m. ******/
-            SET ANSI_NULLS ON
-            GO
-            SET QUOTED_IDENTIFIER ON
-            GO
-            CREATE TABLE [dbo].[TBL_RTELEFONO](
-                [TEL_NID] [int] IDENTITY(1,1) NOT NULL,
-                [USU_NID] [int] NULL,
-                [CLI_NID] [int] NULL,
-                [TEL_CNUMBER] [varchar](9) NULL,
-                [TEL_CCELLPHONE] [varchar](10) NULL,
-             CONSTRAINT [PK_TBL_RTELEFONO] PRIMARY KEY CLUSTERED 
-            (
-                [TEL_NID] ASC
-            )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, 
-            ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-            ) ON [PRIMARY]
-            GO
-            /****** Object:  Table [dbo].[TBL_RUSUARIO]    Script Date: 25/10/2018 8:44:01 p. m. ******/
-            SET ANSI_NULLS ON
-            GO
-            SET QUOTED_IDENTIFIER ON
-            GO
-            CREATE TABLE [dbo].[TBL_RUSUARIO](
-                [USU_NID] [int] IDENTITY(1,1) NOT NULL,
-                [USU_CNAME] [varchar](75) NOT NULL,
-                [USU_CLAST_NAME] [varchar](75) NOT NULL,
-                [USU_CPASSWORD] [varchar](100) NOT NULL,
-                [USU_DDATE_BIRTHDAY] [datetime] NOT NULL,
-                [USU_OACTIVE] [bit] NOT NULL,
-             CONSTRAINT [PK_TBL_RUSUARIO] PRIMARY KEY CLUSTERED 
-            (
-                [USU_NID] ASC
-            )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, 
-            ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-            ) ON [PRIMARY]
-            GO
-            /****** Object:  Table [dbo].[TBL_TREPARACION]    Script Date: 25/10/2018 8:44:01 p. m. ******/
-            SET ANSI_NULLS ON
-            GO
-            SET QUOTED_IDENTIFIER ON
-            GO
-            CREATE TABLE [dbo].[TBL_TREPARACION](
-                [REP_NID] [bigint] IDENTITY(1,1) NOT NULL,
-                [USU_NID] [int] NOT NULL,
-                [CLI_NID] [int] NOT NULL,
-                [CAL_NID] [int] NOT NULL,
-                [EST_NID] [int] NOT NULL,
-                [CAL_CARRANGEMENT] [varchar](500) NOT NULL,
-                [CAL_NVALUE] [bigint] NOT NULL,
-                [CAL_DDATE_REGISTRY] [datetime] NOT NULL,
-                [CAL_DDATE_DELIVERY] [datetime] NULL,
-             CONSTRAINT [PK_TBL_TREPARACION] PRIMARY KEY CLUSTERED 
-            (
-                [REP_NID] ASC
-            )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, 
-            ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-            ) ON [PRIMARY]
-            GO
-            /****** Object:  Table [dbo].[TBL_UUSUARIOPERFIL]    Script Date: 25/10/2018 8:44:01 p. m. ******/
-            SET ANSI_NULLS ON
-            GO
-            SET QUOTED_IDENTIFIER ON
-            GO
-            CREATE TABLE [dbo].[TBL_UUSUARIOPERFIL](
-                [PER_NID] [int] NOT NULL,
-                [USU_NID] [int] NOT NULL,
-                [UPE_OACTIVE] [bit] NOT NULL
-            ) ON [PRIMARY]
-            GO
-            ALTER TABLE [dbo].[TBL_RDIRECCION]  WITH CHECK ADD  CONSTRAINT [FK_TBL_RDIRECCION_TBL_RCLIENTE] 
-            FOREIGN KEY([CLI_NID])
-            REFERENCES [dbo].[TBL_RCLIENTE] ([CLI_NID])
-            GO
-            ALTER TABLE [dbo].[TBL_RDIRECCION] CHECK CONSTRAINT [FK_TBL_RDIRECCION_TBL_RCLIENTE]
-            GO
-            ALTER TABLE [dbo].[TBL_RDIRECCION]  WITH CHECK ADD  CONSTRAINT [FK_TBL_RDIRECCION_TBL_RUSUARIO] 
-            FOREIGN KEY([USU_NID])
-            REFERENCES [dbo].[TBL_RUSUARIO] ([USU_NID])
-            GO
-            ALTER TABLE [dbo].[TBL_RDIRECCION] CHECK CONSTRAINT [FK_TBL_RDIRECCION_TBL_RUSUARIO]
-            GO
-            ALTER TABLE [dbo].[TBL_RTELEFONO]  WITH CHECK ADD  CONSTRAINT [FK_TBL_RTELEFONO_TBL_RCLIENTE] 
-            FOREIGN KEY([CLI_NID])
-            REFERENCES [dbo].[TBL_RCLIENTE] ([CLI_NID])
-            GO
-            ALTER TABLE [dbo].[TBL_RTELEFONO] CHECK CONSTRAINT [FK_TBL_RTELEFONO_TBL_RCLIENTE]
-            GO
-            ALTER TABLE [dbo].[TBL_RTELEFONO]  WITH CHECK ADD  CONSTRAINT [FK_TBL_RTELEFONO_TBL_RUSUARIO] 
-            FOREIGN KEY([USU_NID])
-            REFERENCES [dbo].[TBL_RUSUARIO] ([USU_NID])
-            GO
-            ALTER TABLE [dbo].[TBL_RTELEFONO] CHECK CONSTRAINT [FK_TBL_RTELEFONO_TBL_RUSUARIO]
-            GO
-            ALTER TABLE [dbo].[TBL_TREPARACION]  WITH CHECK ADD  CONSTRAINT [FK_TBL_TREPARACION_TBL_RCALZADO] 
-            FOREIGN KEY([CAL_NID])
-            REFERENCES [dbo].[TBL_RCALZADO] ([CAL_NID])
-            GO
-            ALTER TABLE [dbo].[TBL_TREPARACION] CHECK CONSTRAINT [FK_TBL_TREPARACION_TBL_RCALZADO]
-            GO
-            ALTER TABLE [dbo].[TBL_TREPARACION]  WITH CHECK ADD  CONSTRAINT [FK_TBL_TREPARACION_TBL_RCLIENTE] 
-            FOREIGN KEY([CLI_NID])
-            REFERENCES [dbo].[TBL_RCLIENTE] ([CLI_NID])
-            GO
-            ALTER TABLE [dbo].[TBL_TREPARACION] CHECK CONSTRAINT [FK_TBL_TREPARACION_TBL_RCLIENTE]
-            GO
-            ALTER TABLE [dbo].[TBL_TREPARACION]  WITH CHECK ADD  CONSTRAINT [FK_TBL_TREPARACION_TBL_RESTADO_REPARACION] 
-            FOREIGN KEY([EST_NID])
-            REFERENCES [dbo].[TBL_RESTADO_REPARACION] ([EST_NID])
-            GO
-            ALTER TABLE [dbo].[TBL_TREPARACION] CHECK CONSTRAINT [FK_TBL_TREPARACION_TBL_RESTADO_REPARACION]
-            GO
-            ALTER TABLE [dbo].[TBL_TREPARACION]  WITH CHECK ADD  CONSTRAINT [FK_TBL_TREPARACION_TBL_RUSUARIO] 
-            FOREIGN KEY([USU_NID])
-            REFERENCES [dbo].[TBL_RUSUARIO] ([USU_NID])
-            GO
-            ALTER TABLE [dbo].[TBL_TREPARACION] CHECK CONSTRAINT [FK_TBL_TREPARACION_TBL_RUSUARIO]
-            GO
-            ALTER TABLE [dbo].[TBL_UUSUARIOPERFIL]  WITH CHECK ADD  CONSTRAINT [FK_TBL_UUSUARIOPERFIL_TBL_RPERFIL] 
-            FOREIGN KEY([PER_NID])
-            REFERENCES [dbo].[TBL_RPERFIL] ([PER_NID])
-            GO
-            ALTER TABLE [dbo].[TBL_UUSUARIOPERFIL] CHECK CONSTRAINT [FK_TBL_UUSUARIOPERFIL_TBL_RPERFIL]
-            GO
-            ALTER TABLE [dbo].[TBL_UUSUARIOPERFIL]  WITH CHECK ADD  CONSTRAINT [FK_TBL_UUSUARIOPERFIL_TBL_RUSUARIO] 
-            FOREIGN KEY([USU_NID])
-            REFERENCES [dbo].[TBL_RUSUARIO] ([USU_NID])
-            GO
-            ALTER TABLE [dbo].[TBL_UUSUARIOPERFIL] CHECK CONSTRAINT [FK_TBL_UUSUARIOPERFIL_TBL_RUSUARIO]
-            GO
+           USE [BD_CLINICA_CALZADO]
+        GO
+        /****** Object:  Table [dbo].[TBL_RCALZADO]    Script Date: 26/10/2018 7:36:10 p. m. ******/
+        SET ANSI_NULLS ON
+        GO
+        SET QUOTED_IDENTIFIER ON
+        GO
+        CREATE TABLE [dbo].[TBL_RCALZADO](
+            [CAL_NID] [int] IDENTITY(1,1) NOT NULL,
+            [CAL_CDESCRIPTION] [varchar](50) NOT NULL,
+            [CAL_OACTIVE] [bit] NOT NULL,
+         CONSTRAINT [PK_TBL_RCALZADO] PRIMARY KEY CLUSTERED 
+        (
+            [CAL_NID] ASC
+        )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+        ) ON [PRIMARY]
+        GO
+        /****** Object:  Table [dbo].[TBL_RCLIENTE]    Script Date: 26/10/2018 7:36:10 p. m. ******/
+        SET ANSI_NULLS ON
+        GO
+        SET QUOTED_IDENTIFIER ON
+        GO
+        CREATE TABLE [dbo].[TBL_RCLIENTE](
+            [CLI_NID] [int] IDENTITY(1,1) NOT NULL,
+            [CLI_CNAME] [varchar](75) NOT NULL,
+            [CLI_CLAST_NAME] [varchar](75) NOT NULL,
+            [CLI_DBIRTHDAY] [datetime] NOT NULL,
+            [CLI_OACTIVE] [bit] NOT NULL,
+         CONSTRAINT [PK_TBL_RCLIENTE] PRIMARY KEY CLUSTERED 
+        (
+            [CLI_NID] ASC
+        )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+        ) ON [PRIMARY]
+        GO
+        /****** Object:  Table [dbo].[TBL_RDIRECCION]    Script Date: 26/10/2018 7:36:10 p. m. ******/
+        SET ANSI_NULLS ON
+        GO
+        SET QUOTED_IDENTIFIER ON
+        GO
+        CREATE TABLE [dbo].[TBL_RDIRECCION](
+            [DIR_NID] [bigint] IDENTITY(1,1) NOT NULL,
+            [USU_NID] [int] NULL,
+            [CLI_NID] [int] NULL,
+            [DIR_CADDRESS] [varchar](500) NOT NULL,
+            [DIR_CACTIVE] [bit] NOT NULL,
+         CONSTRAINT [PK_TBL_RDIRECCION] PRIMARY KEY CLUSTERED 
+        (
+            [DIR_NID] ASC
+        )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+        ) ON [PRIMARY]
+        GO
+        /****** Object:  Table [dbo].[TBL_RESTADO_REPARACION]    Script Date: 26/10/2018 7:36:10 p. m. ******/
+        SET ANSI_NULLS ON
+        GO
+        SET QUOTED_IDENTIFIER ON
+        GO
+        CREATE TABLE [dbo].[TBL_RESTADO_REPARACION](
+            [EST_NID] [int] IDENTITY(1,1) NOT NULL,
+            [EST_CDESCRIPTION] [varchar](20) NOT NULL,
+            [EST_OACTIVE] [bigint] NOT NULL,
+         CONSTRAINT [PK_TBL_RESTADO_REPARACION] PRIMARY KEY CLUSTERED 
+        (
+            [EST_NID] ASC
+        )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+        ) ON [PRIMARY]
+        GO
+        /****** Object:  Table [dbo].[TBL_RPERFIL]    Script Date: 26/10/2018 7:36:10 p. m. ******/
+        SET ANSI_NULLS ON
+        GO
+        SET QUOTED_IDENTIFIER ON
+        GO
+        CREATE TABLE [dbo].[TBL_RPERFIL](
+            [PER_NID] [int] IDENTITY(1,1) NOT NULL,
+            [PER_CDESCRIPTION] [varchar](100) NULL,
+            [PER_CROL] [varchar](50) NOT NULL,
+            [PER_OACTIVE] [bit] NOT NULL,
+         CONSTRAINT [PK_TBL_RPERFIL] PRIMARY KEY CLUSTERED 
+        (
+            [PER_NID] ASC
+        )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+        ) ON [PRIMARY]
+        GO
+        /****** Object:  Table [dbo].[TBL_RTELEFONO]    Script Date: 26/10/2018 7:36:10 p. m. ******/
+        SET ANSI_NULLS ON
+        GO
+        SET QUOTED_IDENTIFIER ON
+        GO
+        CREATE TABLE [dbo].[TBL_RTELEFONO](
+            [TEL_NID] [int] IDENTITY(1,1) NOT NULL,
+            [USU_NID] [int] NULL,
+            [CLI_NID] [int] NULL,
+            [TEL_CNUMBER] [varchar](9) NULL,
+            [TEL_CCELLPHONE] [varchar](10) NULL,
+         CONSTRAINT [PK_TBL_RTELEFONO] PRIMARY KEY CLUSTERED 
+        (
+            [TEL_NID] ASC
+        )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+        ) ON [PRIMARY]
+        GO
+        /****** Object:  Table [dbo].[TBL_RUSUARIO]    Script Date: 26/10/2018 7:36:10 p. m. ******/
+        SET ANSI_NULLS ON
+        GO
+        SET QUOTED_IDENTIFIER ON
+        GO
+        CREATE TABLE [dbo].[TBL_RUSUARIO](
+            [USU_NID] [int] IDENTITY(1,1) NOT NULL,
+            [USU_CNAME] [varchar](75) NOT NULL,
+            [USU_CLAST_NAME] [varchar](75) NOT NULL,
+            [USU_CPASSWORD] [varchar](100) NOT NULL,
+            [USU_DDATE_BIRTHDAY] [datetime] NOT NULL,
+            [USU_OACTIVE] [bit] NOT NULL,
+         CONSTRAINT [PK_TBL_RUSUARIO] PRIMARY KEY CLUSTERED 
+        (
+            [USU_NID] ASC
+        )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+        ) ON [PRIMARY]
+        GO
+        /****** Object:  Table [dbo].[TBL_TREPARACION]    Script Date: 26/10/2018 7:36:10 p. m. ******/
+        SET ANSI_NULLS ON
+        GO
+        SET QUOTED_IDENTIFIER ON
+        GO
+        CREATE TABLE [dbo].[TBL_TREPARACION](
+            [REP_NID] [bigint] IDENTITY(1,1) NOT NULL,
+            [USU_NID] [int] NOT NULL,
+            [CLI_NID] [int] NOT NULL,
+            [CAL_NID] [int] NOT NULL,
+            [EST_NID] [int] NOT NULL,
+            [CAL_CARRANGEMENT] [varchar](500) NOT NULL,
+            [CAL_NVALUE] [bigint] NOT NULL,
+            [CAL_DDATE_REGISTRY] [datetime] NOT NULL,
+            [CAL_DDATE_DELIVERY] [datetime] NULL,
+         CONSTRAINT [PK_TBL_TREPARACION] PRIMARY KEY CLUSTERED 
+        (
+            [REP_NID] ASC
+        )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+        ) ON [PRIMARY]
+        GO
+        /****** Object:  Table [dbo].[TBL_UUSUARIOPERFIL]    Script Date: 26/10/2018 7:36:10 p. m. ******/
+        SET ANSI_NULLS ON
+        GO
+        SET QUOTED_IDENTIFIER ON
+        GO
+        CREATE TABLE [dbo].[TBL_UUSUARIOPERFIL](
+            [PER_NID] [int] NOT NULL,
+            [USU_NID] [int] NOT NULL,
+            [UPE_OACTIVE] [bit] NOT NULL
+        ) ON [PRIMARY]
+        GO
+        SET IDENTITY_INSERT [dbo].[TBL_RCALZADO] ON 
+        GO
+        INSERT [dbo].[TBL_RCALZADO] ([CAL_NID], [CAL_CDESCRIPTION], [CAL_OACTIVE]) VALUES (1, N'ALPARGATAS', 1)
+        GO
+        INSERT [dbo].[TBL_RCALZADO] ([CAL_NID], [CAL_CDESCRIPTION], [CAL_OACTIVE]) VALUES (2, N'HAWAIANAS', 1)
+        GO
+        INSERT [dbo].[TBL_RCALZADO] ([CAL_NID], [CAL_CDESCRIPTION], [CAL_OACTIVE]) VALUES (3, N'BOTAS', 1)
+        GO
+        INSERT [dbo].[TBL_RCALZADO] ([CAL_NID], [CAL_CDESCRIPTION], [CAL_OACTIVE]) VALUES (4, N'HUARACHES', 1)
+        GO
+        INSERT [dbo].[TBL_RCALZADO] ([CAL_NID], [CAL_CDESCRIPTION], [CAL_OACTIVE]) VALUES (5, N'SANDALIA', 1)
+        GO
+        INSERT [dbo].[TBL_RCALZADO] ([CAL_NID], [CAL_CDESCRIPTION], [CAL_OACTIVE]) VALUES (6, N'ZAPATOS DE PLATAFORMA', 1)
+        GO
+        INSERT [dbo].[TBL_RCALZADO] ([CAL_NID], [CAL_CDESCRIPTION], [CAL_OACTIVE]) VALUES (7, N'ZAPATILLAS RUNNING', 1)
+        GO
+        INSERT [dbo].[TBL_RCALZADO] ([CAL_NID], [CAL_CDESCRIPTION], [CAL_OACTIVE]) VALUES (8, N'ZAPATILLAS URBANAS', 1)
+        GO
+        INSERT [dbo].[TBL_RCALZADO] ([CAL_NID], [CAL_CDESCRIPTION], [CAL_OACTIVE]) VALUES (9, N'ZAPATOS DEPORTIVOS', 1)
+        GO
+        INSERT [dbo].[TBL_RCALZADO] ([CAL_NID], [CAL_CDESCRIPTION], [CAL_OACTIVE]) VALUES (10, N'ZAPATOS CON ALZAS', 1)
+        GO
+        INSERT [dbo].[TBL_RCALZADO] ([CAL_NID], [CAL_CDESCRIPTION], [CAL_OACTIVE]) VALUES (11, N'ZAPATOS DE TACÓN1?', 1)
+        GO
+        INSERT [dbo].[TBL_RCALZADO] ([CAL_NID], [CAL_CDESCRIPTION], [CAL_OACTIVE]) VALUES (12, N'ZAPATILLAS INDOOR', 1)
+        GO
+        SET IDENTITY_INSERT [dbo].[TBL_RCALZADO] OFF
+        GO
+        SET IDENTITY_INSERT [dbo].[TBL_RPERFIL] ON 
+        GO
+        INSERT [dbo].[TBL_RPERFIL] ([PER_NID], [PER_CDESCRIPTION], [PER_CROL], [PER_OACTIVE]) VALUES (1, N'CAJERO: ES EL REPONSABLE DEL DINERO INGRESADO Y ENTREGA DE TRABAJOS', N'CAJERO', 1)
+        GO
+        INSERT [dbo].[TBL_RPERFIL] ([PER_NID], [PER_CDESCRIPTION], [PER_CROL], [PER_OACTIVE]) VALUES (2, N'EMPLEADO: ES EL REPONSABLE DE LOS TRABAJOS A REALIZAR', N'EMPLEADO', 1)
+        GO
+        SET IDENTITY_INSERT [dbo].[TBL_RPERFIL] OFF
+        GO
+        SET IDENTITY_INSERT [dbo].[TBL_RUSUARIO] ON 
+        GO
+        INSERT [dbo].[TBL_RUSUARIO] ([USU_NID], [USU_CNAME], [USU_CLAST_NAME], [USU_CPASSWORD], [USU_DDATE_BIRTHDAY], [USU_OACTIVE]) VALUES (1, N'CAJERO', N'UNO', N'CAJERO1', CAST(N'1972-02-07T00:00:00.000' AS DateTime), 1)
+        GO
+        INSERT [dbo].[TBL_RUSUARIO] ([USU_NID], [USU_CNAME], [USU_CLAST_NAME], [USU_CPASSWORD], [USU_DDATE_BIRTHDAY], [USU_OACTIVE]) VALUES (2, N'EMPLEADO', N'UNO', N'EMPLEADO1', CAST(N'1972-02-07T00:00:00.000' AS DateTime), 1)
+        GO
+        SET IDENTITY_INSERT [dbo].[TBL_RUSUARIO] OFF
+        GO
+        INSERT [dbo].[TBL_UUSUARIOPERFIL] ([PER_NID], [USU_NID], [UPE_OACTIVE]) VALUES (1, 1, 1)
+        GO
+        INSERT [dbo].[TBL_UUSUARIOPERFIL] ([PER_NID], [USU_NID], [UPE_OACTIVE]) VALUES (2, 2, 1)
+        GO
+        ALTER TABLE [dbo].[TBL_RDIRECCION]  WITH CHECK ADD  CONSTRAINT [FK_TBL_RDIRECCION_TBL_RCLIENTE] FOREIGN KEY([CLI_NID])
+        REFERENCES [dbo].[TBL_RCLIENTE] ([CLI_NID])
+        GO
+        ALTER TABLE [dbo].[TBL_RDIRECCION] CHECK CONSTRAINT [FK_TBL_RDIRECCION_TBL_RCLIENTE]
+        GO
+        ALTER TABLE [dbo].[TBL_RDIRECCION]  WITH CHECK ADD  CONSTRAINT [FK_TBL_RDIRECCION_TBL_RUSUARIO] FOREIGN KEY([USU_NID])
+        REFERENCES [dbo].[TBL_RUSUARIO] ([USU_NID])
+        GO
+        ALTER TABLE [dbo].[TBL_RDIRECCION] CHECK CONSTRAINT [FK_TBL_RDIRECCION_TBL_RUSUARIO]
+        GO
+        ALTER TABLE [dbo].[TBL_RTELEFONO]  WITH CHECK ADD  CONSTRAINT [FK_TBL_RTELEFONO_TBL_RCLIENTE] FOREIGN KEY([CLI_NID])
+        REFERENCES [dbo].[TBL_RCLIENTE] ([CLI_NID])
+        GO
+        ALTER TABLE [dbo].[TBL_RTELEFONO] CHECK CONSTRAINT [FK_TBL_RTELEFONO_TBL_RCLIENTE]
+        GO
+        ALTER TABLE [dbo].[TBL_RTELEFONO]  WITH CHECK ADD  CONSTRAINT [FK_TBL_RTELEFONO_TBL_RUSUARIO] FOREIGN KEY([USU_NID])
+        REFERENCES [dbo].[TBL_RUSUARIO] ([USU_NID])
+        GO
+        ALTER TABLE [dbo].[TBL_RTELEFONO] CHECK CONSTRAINT [FK_TBL_RTELEFONO_TBL_RUSUARIO]
+        GO
+        ALTER TABLE [dbo].[TBL_TREPARACION]  WITH CHECK ADD  CONSTRAINT [FK_TBL_TREPARACION_TBL_RCALZADO] FOREIGN KEY([CAL_NID])
+        REFERENCES [dbo].[TBL_RCALZADO] ([CAL_NID])
+        GO
+        ALTER TABLE [dbo].[TBL_TREPARACION] CHECK CONSTRAINT [FK_TBL_TREPARACION_TBL_RCALZADO]
+        GO
+        ALTER TABLE [dbo].[TBL_TREPARACION]  WITH CHECK ADD  CONSTRAINT [FK_TBL_TREPARACION_TBL_RCLIENTE] FOREIGN KEY([CLI_NID])
+        REFERENCES [dbo].[TBL_RCLIENTE] ([CLI_NID])
+        GO
+        ALTER TABLE [dbo].[TBL_TREPARACION] CHECK CONSTRAINT [FK_TBL_TREPARACION_TBL_RCLIENTE]
+        GO
+        ALTER TABLE [dbo].[TBL_TREPARACION]  WITH CHECK ADD  CONSTRAINT [FK_TBL_TREPARACION_TBL_RESTADO_REPARACION] FOREIGN KEY([EST_NID])
+        REFERENCES [dbo].[TBL_RESTADO_REPARACION] ([EST_NID])
+        GO
+        ALTER TABLE [dbo].[TBL_TREPARACION] CHECK CONSTRAINT [FK_TBL_TREPARACION_TBL_RESTADO_REPARACION]
+        GO
+        ALTER TABLE [dbo].[TBL_TREPARACION]  WITH CHECK ADD  CONSTRAINT [FK_TBL_TREPARACION_TBL_RUSUARIO] FOREIGN KEY([USU_NID])
+        REFERENCES [dbo].[TBL_RUSUARIO] ([USU_NID])
+        GO
+        ALTER TABLE [dbo].[TBL_TREPARACION] CHECK CONSTRAINT [FK_TBL_TREPARACION_TBL_RUSUARIO]
+        GO
+        ALTER TABLE [dbo].[TBL_UUSUARIOPERFIL]  WITH CHECK ADD  CONSTRAINT [FK_TBL_UUSUARIOPERFIL_TBL_RPERFIL] FOREIGN KEY([PER_NID])
+        REFERENCES [dbo].[TBL_RPERFIL] ([PER_NID])
+        GO
+        ALTER TABLE [dbo].[TBL_UUSUARIOPERFIL] CHECK CONSTRAINT [FK_TBL_UUSUARIOPERFIL_TBL_RPERFIL]
+        GO
+        ALTER TABLE [dbo].[TBL_UUSUARIOPERFIL]  WITH CHECK ADD  CONSTRAINT [FK_TBL_UUSUARIOPERFIL_TBL_RUSUARIO] FOREIGN KEY([USU_NID])
+        REFERENCES [dbo].[TBL_RUSUARIO] ([USU_NID])
+        GO
+        ALTER TABLE [dbo].[TBL_UUSUARIOPERFIL] CHECK CONSTRAINT [FK_TBL_UUSUARIOPERFIL_TBL_RUSUARIO]
+        GO
+    </pre>
 
+    <h2>SELECCIONAR DATOS</h2>
+    <pre>
+    <b>--Ejecución de traer todos los usuarios</b>
+        SELECT  USU_NID, USU_CNAME, USU_CLAST_NAME, USU_CPASSWORD, USU_DDATE_BIRTHDAY, USU_OACTIVE
+        FROM    TBL_RUSUARIO
+
+    <b>--Ejecución de traer todos los perfiles</b>
+    SELECT  PER_NID, PER_CDESCRIPTION, PER_CROL, PER_OACTIVE
+    FROM    TBL_RPERFIL
+
+    <b>--Ejecución de traer todos los perfiles </b>
+    SELECT  PER_NID, USU_NID, UPE_OACTIVE
+    FROM    TBL_UUSUARIOPERFIL
+    </pre>
+
+    <h2>USO DE CRUCE DE TABLAS</h2>
+    <pre>
+    <b>--Ejecución de traer todos los usuarios con su perfil</b>
+    SELECT  USU_CNAME + USU_CLAST_NAME [NOMBRE], 
+            USU_CPASSWORD [CLAVE], 
+            CONVERT(VARCHAR(12),USU_DDATE_BIRTHDAY,113) [FECHA DE NACIMIENTO],
+            PER.PER_CROL [PERFIL ASIGNADO],
+            PER.PER_CDESCRIPTION [RESPONSABILIDAD]
+    FROM    TBL_UUSUARIOPERFIL UUP inner join
+            TBL_RUSUARIO USU ON USU.USU_NID = UUP.USU_NID inner join
+            TBL_RPERFIL PER ON PER.PER_NID=UUP.PER_NID
+    </pre>
+    <h2>ACTUALIZACIÓN DE DATOS</h2>
+    <pre>
+    <b>--Ejecución de traer todos los usuarios con su perfil</b>
+
+        UPDATE TBL_RUSUARIO
+        SET USU_OACTIVE=0
+        WHERE USU_NID=2
+    <b>--Ejecución de traer todos los usuarios ACTIVOS</b>
+
+        SELECT  USU_CNAME + USU_CLAST_NAME [NOMBRE], 
+                USU_CPASSWORD [CLAVE], 
+                CONVERT(VARCHAR(12),USU_DDATE_BIRTHDAY,113) [FECHA DE NACIMIENTO],
+                PER.PER_CROL [PERFIL ASIGNADO],
+                PER.PER_CDESCRIPTION [RESPONSABILIDAD]
+        FROM    TBL_UUSUARIOPERFIL UUP inner join
+                TBL_RUSUARIO USU ON USU.USU_NID = UUP.USU_NID inner join
+                TBL_RPERFIL PER ON PER.PER_NID=UUP.PER_NID
+        WHERE   PER.PER_OACTIVE=1
+                AND USU.USU_OACTIVE=1    
+    </pre>
+    <h2>INSERCIÓN Y BORRADO DE DATOS</h2>
+    <pre>
+       <b>--INSERCIÓN DE UN NUEVO PERFIL</b>
+
+        INSERT INTO TBL_RPERFIL(PER_CDESCRIPTION,PER_CROL,PER_OACTIVE)
+        VALUES('ADMINISTRADOR:PODRA TENER TODOS LOS PRIVILEGIOS','ADMINISTRADOR',1)
+        
+        <b>
+        /*CONVERTIMOS AL USUARIO 1 COMO ADMINISTRADOR
+        PARA ELLO REALIZAMOS EL BORRADO DE LA TABLA UNION DE ESTE USUARIO*/</b>
+
+        DELETE TBL_UUSUARIOPERFIL
+        WHERE USU_NID=1
+
+        <b>--INSERTAMOS EL NUEVO PERFIL CON ESTE USUARIO</b>
+
+        INSERT INTO TBL_UUSUARIOPERFIL(PER_NID,USU_NID,UPE_OACTIVE)
+        VALUES(3,1,1)
+
+        <b>--Ejecución de traer todos los usuarios ACTIVOS</b>
+
+        SELECT  USU_CNAME + USU_CLAST_NAME [NOMBRE], 
+                USU_CPASSWORD [CLAVE], 
+                CONVERT(VARCHAR(12),USU_DDATE_BIRTHDAY,113) [FECHA DE NACIMIENTO],
+                PER.PER_CROL [PERFIL ASIGNADO],
+                PER.PER_CDESCRIPTION [RESPONSABILIDAD]
+        FROM    TBL_UUSUARIOPERFIL UUP inner join
+                TBL_RUSUARIO USU ON USU.USU_NID = UUP.USU_NID inner join
+                TBL_RPERFIL PER ON PER.PER_NID=UUP.PER_NID
+        WHERE   PER.PER_OACTIVE=1
+                AND USU.USU_OACTIVE=1    
     </pre>
 </div>
 </body>
